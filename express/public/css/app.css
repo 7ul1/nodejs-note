@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url(../images/01.png) no-repeat;
+    background-size: cover;
+    text-align: center;
+    font-size: 50px;
+    color: #222;
+}

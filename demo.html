@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    <label>
+                        <input type="checkbox" >全选    
+                    </label>
+                </th>
+                <th>会员名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>孙悟空</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>猪八戒</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>沙悟净</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>唐僧</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <SCript>
+	let checkAll = document.querySelector("thead th input"); 
+	let checkVal = document.querySelectorAll("tbody td input");   
+	checkAll.onclick = function () { 
+        for (let i = 0; i < checkVal.length; i++) { 
+			if (checkAll.checked === true) {
+				checkVal[i].checked = true; 
+			} else {
+				checkVal[i].checked = false;  
+			}
+        }
+	};
+
+	// for (let j = 0; j < checkVal.length; j++) {
+	// 	checkVal[j].onclick = function () { 
+	// 		var flag = true; 
+	// 		for (let a = 0; a < checkVal.length; a++) {  
+	// 			if (checkVal[a].checked === false) { 
+	// 				flag = false;  
+	// 			}    				
+	// 		}
+	// 		checkAll.checked = flag; 
+	// 	}
+	// }
+
+
+    // 外层遍历点击的所有按钮，里面点击每一个按钮的时候执行该函数并使flag的值为true(该值为checkAll的值，若为false则取消全选，若为true则全部选中)
+    // 里层遍历是对所有按钮进行判断，若其中一个按钮的值为false则flag的值就不会为true，也就不会全选，若遍历时候所有的按钮都是true值
+    // 则不会把flag的值变为false 在最后将flag的值赋值给checkAll 则实现全选/全不选
+    for (let j = 0; j < checkVal.length; j++) {
+        checkVal[j].onclick = function(){
+            // 该值用于指定checkAll的 选/不选
+            var flag = true;
+            for (let a = 0; a < checkVal.length; a++) {
+                if (checkVal[a].checked === false) {
+                    flag = false
+                }
+                checkAll.checked = flag   
+            }
+        }        
+    }
+    </SCript>
+</body>
+</html>
